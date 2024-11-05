@@ -1,34 +1,37 @@
 import { useContext, useState } from "react";
 import { AssigmentsContext } from "./context";
+
+const MAX_LETTERS = 50;
+const MAX_ASSIGNMENTS = 10;
+
 function AddAssigment() {
   const { assigments, setAssigments } = useContext(AssigmentsContext);
   const [assigment, setAssigment] = useState("");
-  const [emptyMessage, setemptyMessage] = useState("");
-  const [lettersMessage, setLettersMessage] = useState("");
-  const [MaxAssigmentsMessage, setMaxAssigmentsMessage] = useState("");
+  const [message, setMessage] = useState("");
+
   function handleOnClick() {
-    const MaxLetters = 50;
-    const MaxAssigments = 10;
+    let showText = "";
     if (!assigment) {
-      setemptyMessage("you can't add an empty assigment");
-    } else if (assigment.length > MaxLetters) {
-      setLettersMessage(`you can't write more then ${MaxLetters} letters`);
-    } else if (assigments.length >= MaxAssigments) {
-      setMaxAssigmentsMessage(
-        `you can't write more then ${MaxAssigments} assigments`
-      );
-    } else {
+      showText += " you can't add an empty assigment.";
+    }
+    if (assigment.length > MAX_LETTERS) {
+      showText += ` you can't write more then ${MAX_LETTERS} letters.`;
+    }
+    if (assigments.length >= MAX_ASSIGNMENTS) {
+      showText += ` you can't write more then ${MAX_ASSIGNMENTS} assigments.`;
+    }
+    if (showText === "") {
       setAssigments((prev) => [...prev, assigment]);
       setAssigment("");
     }
+    setMessage(showText);
   }
 
   function handleOnChange(e) {
     setAssigment(e.target.value);
-    setemptyMessage("");
-    setLettersMessage("");
-    setMaxAssigmentsMessage("");
+    setMessage("");
   }
+
   return (
     <div>
       <label>
@@ -36,9 +39,7 @@ function AddAssigment() {
         <input type="text" value={assigment} onChange={handleOnChange}></input>
       </label>
       <button onClick={handleOnClick}>Add</button>
-      <div>{emptyMessage}</div>
-      <div>{lettersMessage}</div>
-      <div>{MaxAssigmentsMessage}</div>
+      <div>{message}</div>
     </div>
   );
 }

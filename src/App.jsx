@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AddAssigment from "./AddAssigment";
-import ListAssigments from "./ListAssigments";
+import Assigments from "./Assigments";
 import { AssigmentsContext } from "./context";
 
 function App() {
@@ -10,17 +10,7 @@ function App() {
       <AssigmentsContext.Provider value={{ setAssigments, assigments }}>
         <p>To Do List:</p>
         <AddAssigment />
-        <div>
-          {assigments.length ? (
-            <div>
-              <p>My Assigments:</p>
-              <ListAssigments />
-              click to delete complete assigment
-            </div>
-          ) : (
-            "Add assigments"
-          )}
-        </div>
+        <Assigments />
       </AssigmentsContext.Provider>
     </div>
   );
