@@ -1,6 +1,7 @@
-import { useState } from "react";
-
-function AddAssigment({ setAssigments, assigments }) {
+import { useContext, useState } from "react";
+import { AssigmentsContext } from "./context";
+function AddAssigment() {
+  const { assigments, setAssigments } = useContext(AssigmentsContext);
   const [assigment, setAssigment] = useState("");
   const [emptyMessage, setemptyMessage] = useState("");
   const [lettersMessage, setLettersMessage] = useState("");

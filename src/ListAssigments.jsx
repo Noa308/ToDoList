@@ -1,15 +1,13 @@
+import { useContext } from "react";
 import Assigment from "./Assigment";
+import { AssigmentsContext } from "./context";
 
-function ListAssigments({ assigments, setAssigments }) {
+function ListAssigments() {
+  const { assigments } = useContext(AssigmentsContext);
   return (
     <div>
       {assigments.map((assigment, i) => (
-        <Assigment
-          assigment={assigment}
-          key={i}
-          index={i}
-          setAssigments={setAssigments}
-        />
+        <Assigment key={i} index={i} assigment={assigment} />
       ))}
     </div>
   );

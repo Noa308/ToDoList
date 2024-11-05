@@ -1,4 +1,9 @@
-function Assigment({ assigment, index, setAssigments }) {
+import { useContext } from "react";
+import { AssigmentsContext } from "./context";
+
+function Assigment({ assigment, index }) {
+  const { setAssigments } = useContext(AssigmentsContext);
+
   function handleChange() {
     setAssigments((prev) => [
       ...prev.slice(0, index),
@@ -8,7 +13,6 @@ function Assigment({ assigment, index, setAssigments }) {
   return (
     <div>
       <button onClick={handleChange}>X</button>
-      {/* <input type="checkbox" onChange={handleChange} checked={false} /> */}
       {assigment}
     </div>
   );
