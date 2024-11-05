@@ -7,10 +7,21 @@ function App() {
   return (
     <div>
       <p>To Do List:</p>
-      <AddAssigment setAssigments={setAssigments} />
-      My Assigments:
-      <ListAssigments assigments={assigments} setAssigments={setAssigments} />
-      check the checked box to delete complete assigment
+      <AddAssigment setAssigments={setAssigments} assigments={assigments} />
+      <div>
+        {assigments.length ? (
+          <div>
+            <p>My Assigments:</p>
+            <ListAssigments
+              assigments={assigments}
+              setAssigments={setAssigments}
+            />
+            click to delete complete assigment
+          </div>
+        ) : (
+          "Add assigments"
+        )}
+      </div>
     </div>
   );
 }

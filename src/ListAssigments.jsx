@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import Assigment from "./Assigment";
 
 function ListAssigments({ assigments, setAssigments }) {
