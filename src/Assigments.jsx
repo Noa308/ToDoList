@@ -5,19 +5,19 @@ import { AssigmentsContext } from "./context";
 function Assigments() {
   const { assigments } = useContext(AssigmentsContext);
   return (
-    <div>
+    <div className="flex mt-4 font-normal text-xl text-purple-950 ">
       {assigments.length ? (
         <div>
-          <p>My Assigments:</p>
+          <p className="font-bold">My Assigments:</p>
           <div>
             {assigments.map((assigment, i) => (
               <Assigment key={i} index={i} assigment={assigment} />
             ))}
           </div>
-          <p>click to delete complete assigment</p>
+          <p className="text-lg pt-2">click to delete complete assigment</p>
         </div>
       ) : (
-        <p> {"You don't have any assigments yet"}</p>
+        <p className="text-lg"> {"You don't have any assigments yet"}</p>
       )}
     </div>
   );

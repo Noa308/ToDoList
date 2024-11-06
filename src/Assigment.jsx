@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AssigmentsContext } from "./context";
+import Button from "./Button";
 
 function Assigment({ assigment, index }) {
   const { setAssigments } = useContext(AssigmentsContext);
@@ -11,8 +12,10 @@ function Assigment({ assigment, index }) {
     ]); //remove the assigment
   }
   return (
-    <div>
-      <button onClick={handleChange}>X</button>
+    <div className="flex ">
+      <Button textSize={"text-sm"} onClick={handleChange}>
+        X
+      </Button>
       {assigment}
     </div>
   );

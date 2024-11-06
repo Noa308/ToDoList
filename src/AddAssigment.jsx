@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { AssigmentsContext } from "./context";
+import Button from "./Button";
 
 const MAX_LETTERS = 50;
 const MAX_ASSIGNMENTS = 10;
@@ -33,13 +34,20 @@ function AddAssigment() {
   }
 
   return (
-    <div>
-      <label>
-        Add a new assigment
-        <input type="text" value={assigment} onChange={handleOnChange}></input>
-      </label>
-      <button onClick={handleOnClick}>Add</button>
-      <div>{message}</div>
+    <div className="flex mt-4 flex-col">
+      <div className="flex">
+        <label className="flex font-normal text-xl text-purple-950 ">
+          Add a new assigment:
+          <input
+            type="text"
+            value={assigment}
+            onChange={handleOnChange}
+            className="bg-purple-50 rounded-md h-8"
+          />
+        </label>
+        <Button onClick={handleOnClick}>Add</Button>
+      </div>
+      <div className="font-bold mt-4 text-red-600">{message}</div>
     </div>
   );
 }
